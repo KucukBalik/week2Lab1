@@ -29,4 +29,37 @@ public class RequestController {
 
     }
 
+    @GetMapping("/calculator/{function}")
+    public int Calculator(@PathVariable String function, @RequestParam int num1, @RequestParam int num2){
+
+        int result;
+
+        switch (function){
+
+            case "add" :
+                myCalculator Addition = new myCalculator();
+                result = Addition.add(num1, num2);
+            break;
+            case "substraction" :
+                myCalculator substraction = new myCalculator();
+                result = substraction.substraction(num1, num2);
+            break;
+            case "multiply" :
+                myCalculator Multiply = new myCalculator();
+                result = Multiply.multiply(num1, num2);
+            break;
+            case "divide" :
+                myCalculator divide = new myCalculator();
+                result = divide.divide(num1, num2);
+            break;
+            default:
+                System.out.println("Please enter a valid operation");
+                result = 0;
+        }
+
+        return result;
+    }
+
+
+
 }
